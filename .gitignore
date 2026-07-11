@@ -1,0 +1,12 @@
+# Variables sensibles
+.env
+
+# Archivos temporales 
+.vscode/
+*.log
+
+# WordPress
+wp-content/uploads/
+
+# Docker
+*.tar
