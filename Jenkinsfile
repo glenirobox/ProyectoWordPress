@@ -2,29 +2,29 @@ pipeline {
     agent any
 
     stages {
-
         stage('Verificar Docker') {
             steps {
                 sh 'docker --version'
-    }
-}
+            }
         }
 
         stage('Detener Contenedores') {
             steps {
-                powershell 'docker compose down'
+                // Pon aquí tu comando con sh si usas docker-compose down, ej:
+                sh 'docker compose down' 
             }
         }
 
         stage('Levantar Contenedores') {
             steps {
-                powershell 'docker compose up -d'
+                // Pon aquí tu comando con sh si usas docker-compose up, ej:
+                sh 'docker compose up -d'
             }
         }
 
         stage('Verificar Servicios') {
             steps {
-                powershell 'docker compose ps'
+                sh 'docker ps'
             }
         }
     }
