@@ -5,8 +5,9 @@ pipeline {
 
         stage('Verificar Docker') {
             steps {
-                powershell 'docker ps'
-            }
+                sh 'docker --version'
+    }
+}
         }
 
         stage('Detener Contenedores') {
