@@ -2,29 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Verificar Docker') {
+        stage('Checkout desde Git') {
             steps {
-                sh 'docker --version'
+                checkout scm
             }
         }
 
-        stage('Detener Contenedores') {
-            steps {
-                // Pon aquí tu comando con sh si usas docker-compose down, ej:
-                sh 'docker compose down' 
+        stage('Docker Compose Down') {
+            steps {          
+                bat 'docker compose down'
             }
         }
 
-        stage('Levantar Contenedores') {
+        stage('Docker Compose Up') {
             steps {
-                // Pon aquí tu comando con sh si usas docker-compose up, ej:
-                sh 'docker compose up -d'
+             
+                bat 'docker compose up -d'
             }
         }
 
-        stage('Verificar Servicios') {
-            steps {
-                sh 'docker ps'
+        stage('Verificar Despliegue') {
+            steps { 
+                bat 'docker ps'
             }
         }
     }
